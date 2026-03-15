@@ -1,0 +1,8 @@
+{
+  "name": "BIG LOVA-FASHION",
+  "description": "Plataforma Premium de Moda + Rede Social Exclusiva com design de luxo e funcionalidades sociais avançadas.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

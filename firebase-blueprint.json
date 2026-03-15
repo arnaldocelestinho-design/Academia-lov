@@ -1,0 +1,73 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Application user profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "displayName": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "role": { "type": "string", "enum": ["normal", "premium", "admin"] },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "isPremium": { "type": "boolean" },
+        "bi": { "type": "string" },
+        "birthDate": { "type": "string" },
+        "age": { "type": "number" },
+        "gender": { "type": "string" },
+        "address": { "type": "string" },
+        "height": { "type": "string" }
+      },
+      "required": ["id", "displayName", "phoneNumber", "role"]
+    },
+    "Post": {
+      "title": "Post",
+      "description": "Social media post",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorPhoto": { "type": "string" },
+        "type": { "type": "string", "enum": ["image", "video"] },
+        "contentUrl": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "likesCount": { "type": "number" },
+        "commentsCount": { "type": "number" }
+      },
+      "required": ["id", "userId", "type", "contentUrl"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Chat message",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "text": { "type": "string" },
+        "type": { "type": "string", "enum": ["text", "image", "video", "audio"] },
+        "mediaUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["id", "senderId", "receiverId", "type"]
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "User",
+      "description": "Collection of user profiles"
+    },
+    "posts": {
+      "schema": "Post",
+      "description": "Collection of social media posts"
+    },
+    "chats/{chatId}/messages": {
+      "schema": "Message",
+      "description": "Subcollection of messages for a specific chat"
+    }
+  }
+}
